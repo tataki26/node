@@ -34,8 +34,6 @@ const express = require("express");
 // execute express
 const app = express();
 
-const PORT = 3000;
-
 // routing
 // 상대 경로 지정
 // 해당 경로에 있는 js file read
@@ -51,8 +49,4 @@ app.set("view engine", "ejs");
 // middleware 등록
 app.use("/", home);
 
-// open port 3000
-// localhost:3000
-app.listen(PORT, () => {
-    console.log("Server starts...");
-});
+module.exports = app;
