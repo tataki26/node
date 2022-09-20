@@ -32,49 +32,24 @@ const express = require("express");
 // execute express
 const app = express();
 
+// app setting
+// view단 처리를 위한 view engine setting
+// 두 번째 인자: file이 저장될 directory 이름
+app.set("views", "./views");
+// html 해석 engine 지정
+app.set("view engine", "ejs");
+
 // root path
 // browser로 루트 경로로 요청이 들어오면 콜백 함수 실행
 // 경로 지정, req: 요청, res: 응답
 app.get("/", (req, res) => {
-    // send message
-    res.send(`
-        <!DOCTYPE html>
-        <html lang="ko">
-        <head>
-            <meta charset="UTF-8">
-            <meta http-equiv="X-UA-Compatible" content="IE=edge">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Document</title>
-        </head>
-        <body>
-            여기는 루트입니다.
-        </body>
-        </html>
-    `
-    );
+    // ejs file 연결
+    // views부터 시작
+    res.render("home/index");
 });
 
 app.get("/login", (req, res) => {
-    // hard coding
-    res.send(`
-        <!-- ! + enter: 자동 완성-->
-        <!DOCTYPE html>
-        <html lang="ko"> <!-- browser가 문서를 해독할 때 필요한 속성 -->
-        <head>
-            <meta charset="UTF-8">
-            <meta http-equiv="X-UA-Compatible" content="IE=edge">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Document</title>
-        </head>
-        <body>
-            <!-- 자동 완성: input 입력 후 tab -->
-            <!-- placeholder: hint message -->
-            <input type="text" placeholder="아이디"><br>
-            <input type="text" placeholder="비밀번호"><br>
-            <button>로그인</button>
-        </body>
-        </html>
-    `);
+    res.render("home/login");
 });
 
 // open port 3000
