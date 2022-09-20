@@ -1,4 +1,5 @@
 // 서버의 중심 파일
+"use strict";
 
 // // http
 // // - 내장 모듈
@@ -27,10 +28,18 @@
 // with express module
 //
 
+// module
 // load express module
 const express = require("express");
 // execute express
 const app = express();
+
+const PORT = 3000;
+
+// routing
+// 상대 경로 지정
+// 해당 경로에 있는 js file read
+const home = require("./routes/home");
 
 // app setting
 // view단 처리를 위한 view engine setting
@@ -39,21 +48,11 @@ app.set("views", "./views");
 // html 해석 engine 지정
 app.set("view engine", "ejs");
 
-// root path
-// browser로 루트 경로로 요청이 들어오면 콜백 함수 실행
-// 경로 지정, req: 요청, res: 응답
-app.get("/", (req, res) => {
-    // ejs file 연결
-    // views부터 시작
-    res.render("home/index");
-});
-
-app.get("/login", (req, res) => {
-    res.render("home/login");
-});
+// middleware 등록
+app.use("/", home);
 
 // open port 3000
 // localhost:3000
-app.listen(3000, () => {
+app.listen(PORT, () => {
     console.log("Server starts...");
 });
