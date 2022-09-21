@@ -37,12 +37,12 @@ const app = express();
 // routing
 // 상대 경로 지정
 // 해당 경로에 있는 js file read
-const home = require("./routes/home");
+const home = require("./src/routes/home");
 
 // app setting
 // view단 처리를 위한 view engine setting
 // 두 번째 인자: file이 저장될 directory 이름
-app.set("views", "./views");
+app.set("views", "./src/views");
 // html 해석 engine 지정
 app.set("view engine", "ejs");
 
