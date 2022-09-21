@@ -26,8 +26,13 @@ router.get("/login", (req, res) => {
 // controller file을 불러와서 해당하는 객체에 접근
 // root 경로로 왔을 때는 home controller로,
 // login 경로로 왔을 때는 login controller로 넘어감
-router.get("/", ctrl.home);
-router.get("/login", ctrl.login);
+router.get("/", ctrl.output.home);
+router.get("/login", ctrl.output.login);
+
+// server로 login data를 받는 API
+// frontend의 request data를 server console에 띄우기
+// client로부터 url에 post 요청을 받으면 callback 함수 실행
+router.post("/login", ctrl.process.login);
 
 // router를 외부 file에서 사용할 수 있도록 내보내기
 module.exports = router;

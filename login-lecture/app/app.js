@@ -53,4 +53,10 @@ app.use(express.static(`${__dirname}/src/public`));
 // middleware 등록
 app.use("/", home);
 
+// json을 위한 middleware
+// express(new version)에 body-parser 포함됨
+app.use(express.json());
+// URL을 통해 전달되는 data에 한글, 공백과 같은 문자가 포함될 경우 제대로 인식하지 못하는 문제 해결
+app.use(express.urlencoded({extended: true}));
+
 module.exports = app;
