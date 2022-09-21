@@ -2,6 +2,8 @@
 
 "use strict";
 
+const { post } = require("../../../routes/home");
+
 // querySelector(질의 선택자)
 // 파라미터로 넘어오는 선택자로부터 html data를 가져올 수 있음
 // 선택자: html tag 정보, 개발자가 임의로 지정 가능(id)
@@ -23,5 +25,18 @@ function login(){
         id: id.value,
         psword: psword.value,
     };
-    console.log(req);
+    
+    // server에 전달
+    // 첫번째 인자: data 전달 경로
+    fetch("/login", {
+        // body로 전달 시, POST 메소드 활용
+        method: "POST",
+        // 전달하는 data가 JSON 형식
+        headers: {
+            "Content-Type": "application/json"
+        },
+        // key: body, value: req
+        // 객체를 JSON(문자열)으로 감싼 뒤 전달
+        body: JSON.stringify(req),
+    });
 };
