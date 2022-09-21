@@ -46,6 +46,10 @@ app.set("views", "./src/views");
 // html 해석 engine 지정
 app.set("view engine", "ejs");
 
+// login.js와 login.ejs를 연결해주는 middleware
+// 정적 경로 추가
+// __dirname: 현재 파일 위치를 반환
+app.use(express.static(`${__dirname}/src/public`));
 // middleware 등록
 app.use("/", home);
 
