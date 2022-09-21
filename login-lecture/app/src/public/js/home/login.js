@@ -2,5 +2,26 @@
 
 "use strict";
 
-console.log("hello");
-console.log("bye");
+// querySelector(질의 선택자)
+// 파라미터로 넘어오는 선택자로부터 html data를 가져올 수 있음
+// 선택자: html tag 정보, 개발자가 임의로 지정 가능(id)
+// #id: tag에 id로 부여되어 있는 id를 가져오기(input id가 아닌 id에 담긴 선택자 id) 
+const id = document.querySelector("#id"),
+    paword = document.querySelector("#psword"),
+    // tag 자체를 load
+    // button이 하나만 존재하므로 가능
+    loginBtn = document.querySelector("button");
+
+// eventlistener
+// "click" event가 발생하면 login 함수(callback) 실행
+loginBtn.addEventListener("click", login);
+
+function login(){
+    // 요청하는 data
+    const req = {
+        // tag.value: html data 가져오기
+        id: id.value,
+        psword: psword.value,
+    };
+    console.log(req);
+};

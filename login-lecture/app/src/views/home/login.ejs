@@ -7,14 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- node.js 사용 시, 파일 접근을 위한 middleware 필요 -->
     <!-- middleware 설정에 따라 public 안에 있는 js directory에 접근 -->
-    <script src="/js/home/login.js"></script>
+    <!-- defer: 페이지가 모두 로드된 후에 해당 외부 script 실행 -->
+    <script src="/js/home/login.js" defer></script>
     <title>Document</title>
 </head>
 <body>
     <!-- 자동 완성: input 입력 후 tab -->
     <!-- placeholder: hint message -->
-    <input type="text" placeholder="아이디"><br>
-    <input type="text" placeholder="비밀번호"><br>
+    <!-- id: 선택자 -->
+    <input id="id" type="text" placeholder="아이디"><br>
+    <input id="psword" type="text" placeholder="비밀번호"><br>
     <button>로그인</button>
 </body>
 </html>
